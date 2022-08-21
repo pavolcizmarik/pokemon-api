@@ -1,15 +1,16 @@
 import React from "react";
 
 import logo from "../../assets/logo.png";
+import { Container, ContainerWrapper } from "../PokemonList/PokemonList.styled";
 
 export const Header: React.FC = () => {
   return (
     <>
-      <div className="w-full pl-4 pr-4 bg-red-600">
-        <div className="max-w-7xl m-auto">
+      <Container className="bg-red-600">
+        <ContainerWrapper>
           <img src={logo} alt="logo" className="d-block w-40 py-4" />
-        </div>
-      </div>
+        </ContainerWrapper>
+      </Container>
     </>
   );
 };
