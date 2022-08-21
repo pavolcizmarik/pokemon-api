@@ -12,6 +12,7 @@ import {
   CardImgWrapper,
   CardName,
   CardStats,
+  CardStatsAttr,
   CardType,
 } from "./PokemonCard.styled";
 
@@ -75,7 +76,7 @@ export const PokemonCard: React.FC<IPokemonBasic> = ({ name, url }) => {
           <CardType>
             {pokemonData.types.map(({ type }, i) => {
               return (
-                <CardBadge className={`bg-${type.name}`} key={i}>
+                <CardBadge key={i}>
                   {type.name}
                 </CardBadge>
               );
@@ -84,10 +85,8 @@ export const PokemonCard: React.FC<IPokemonBasic> = ({ name, url }) => {
           <CardStats>
             {Object.entries(stats).map(([key, value]: any, i) => {
               return (
-                <div key={i}>
-                  <i data-icon={key}></i>
-                  <p>{value}</p>
-                </div>
+                // maybe i could use some translations for keys, but...
+                <p key={i}>{key}: <CardStatsAttr>{value}</CardStatsAttr></p>
               );
             })}
           </CardStats>

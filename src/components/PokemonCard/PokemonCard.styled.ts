@@ -82,9 +82,11 @@ export const CardBadge = tw.div`
     text-sm
     capitalize
     px-4
-    text-white
+    text-slate-500
     mx-2
     rounded-full
+    border-2
+    radius-full
 `;
 
 export const CardType = tw.div`
@@ -94,9 +96,15 @@ export const CardType = tw.div`
 `;
 
 export const CardStats = tw.div`
+    text-slate-500
     flex
+    flex-col
     align-center
     justify-between
     text-center
     w-full
 `;
+
+export const CardStatsAttr = tw.span`
+    font-bold
+`
