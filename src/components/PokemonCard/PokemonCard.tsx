@@ -16,12 +16,20 @@ import {
   CardType,
 } from "./PokemonCard.styled";
 
+interface IStat {
+  base_stat: string;
+  stat: IPokemonBasic;
+}
+
 export const PokemonCard: React.FC<IPokemonBasic> = ({ name, url }) => {
   const [pokemonData, setPokemonData] = useState<IPokemonInfo>();
   const [stats, setStats] = useState([]);
 
   const getPokemonData = async () => {
-    /* const response = await axios.get(url); */
+    /**
+     * Could be basicly this
+     * const response = await axios.get(url); 
+     */
     const response = await axios.get(`${API.GET_POKEMONS}/${name}`);
 
     setPokemonData(response.data);
@@ -31,14 +39,14 @@ export const PokemonCard: React.FC<IPokemonBasic> = ({ name, url }) => {
 
     const filteredBaseStats = Object.keys(response.data)
       .filter((key) => baseStatsKeys.includes(key))
-      .reduce((obj: any, key: any) => {
+      .reduce((obj: {[key: string]: string}, key) => {
         obj[key] = response.data[key];
         return obj;
       }, {});
 
     const filteredAdvancedStats = response.data.stats
-      .filter((key: any) => advancedStatsKeys.includes(key.stat.name))
-      .reduce((obj: any, key: any) => {
+      .filter((key: IStat) => advancedStatsKeys.includes(key.stat.name))
+      .reduce((obj: {[key: string]: string}, key: IStat) => {
         obj[key.stat.name] = key.base_stat;
         return obj;
       }, {});
@@ -83,9 +91,9 @@ export const PokemonCard: React.FC<IPokemonBasic> = ({ name, url }) => {
             })}
           </CardType>
           <CardStats>
-            {Object.entries(stats).map(([key, value]: any, i) => {
+            {Object.entries(stats).map(([key, value], i) => {
               return (
-                // maybe i could use some translations for keys, but...
+                // maybe I could add some translations for keys, but...
                 <p key={i}>{key}: <CardStatsAttr>{value}</CardStatsAttr></p>
               );
             })}

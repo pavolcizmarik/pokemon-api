@@ -11,7 +11,6 @@ export const Card = tw.div<IPokeType>`
     relative
     flex
     items-center
-    justify-center
     flex-col
     w-full
     max-w-[300px]

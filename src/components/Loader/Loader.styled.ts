@@ -1,6 +1,6 @@
 import tw from "tailwind-styled-components";
 
-// jasně, mohl jsem tam dát prostě obrázek...
+// css pokeball
 
 export const LoaderContainer = tw.div`
   absolute

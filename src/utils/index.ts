@@ -1,4 +1,5 @@
 export const handleColorType = (type: string) => {
+  // downside of tailwind, you cannot construct classes dynamically for e.g. `bg-image-${type}`...
   switch (type) {
     case "normal":
       return "bg-image-normal";

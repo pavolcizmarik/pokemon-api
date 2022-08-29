@@ -4,9 +4,10 @@ import axios from "axios";
 import { API } from "../../constants";
 import { /* IFetchPokemonResponse, */ IPokemonBasic } from "../../types";
 
-import { PokemonCard } from "../PokemonCard/PokemonCard";
-import { Container, ContainerWrapper, LoadMore } from "./PokemonList.styled";
-import { Loader } from "../Loader/Loader";
+import { PokemonCard } from "../PokemonCard";
+import { LoadMore } from "./PokemonList.styled";
+import { Container, ContainerWrapper } from "../Layout/Layout.styled";
+import { Loader } from "../Loader";
 
 export const PokemonList: React.FC = () => {
   // const [data, setData] = useState<IFetchPokemonResponse[]>([]);
@@ -15,6 +16,7 @@ export const PokemonList: React.FC = () => {
   const [requestUrl, setRequestUrl] = useState(API.GET_POKEMONS);
 
   const getPokemons = async () => {
+    setLoading(true);
     try {
       const result = await axios.get(requestUrl);
 
@@ -24,6 +26,7 @@ export const PokemonList: React.FC = () => {
       setLoading(false);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -37,10 +40,10 @@ export const PokemonList: React.FC = () => {
     // eslint-disable-next-line
   }, []);
 
-  if (loading) return <Loader />;
-
   return (
     <>
+      {loading && <Loader />}
+
       <Container>
         <ContainerWrapper>
           {pokemons?.map((pokemon, i) => {

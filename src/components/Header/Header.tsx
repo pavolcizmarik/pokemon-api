@@ -1,7 +1,7 @@
 import React from "react";
 
 import logo from "../../assets/logo.png";
-import { Container, ContainerWrapper } from "../PokemonList/PokemonList.styled";
+import { Container, ContainerWrapper } from "../Layout/Layout.styled";
 
 export const Header: React.FC = () => {
   return (
