@@ -106,4 +106,4 @@ export const CardStats = tw.div`
 
 export const CardStatsAttr = tw.span`
     font-bold
-`
+`;

@@ -3,7 +3,7 @@ import tw from "tailwind-styled-components";
 // css pokeball
 
 export const LoaderContainer = tw.div`
-  absolute
+  fixed
   inset-0
   flex
   h-screen
@@ -11,6 +11,7 @@ export const LoaderContainer = tw.div`
   items-center
   justify-center
   bg-white/50
+  z-10
 `;
 
 export const LoaderIcon = tw.div`
